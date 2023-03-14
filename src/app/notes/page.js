@@ -11,14 +11,14 @@ export const dynamic = 'auto',
 
 async function getNotes() {
 
-    const db = new PocketBase('http://127.0.0.1:8090');
-    const data = await db.collection('notes').getList();
+    // const db = new PocketBase('http://127.0.0.1:8090');
+    // const data = await db.collection('notes').getList();
 
     //another way to get data from DB:
-    // const res = await fetch("http://127.0.0.1:8090/api/collections/notes/records?page=1&perPage=30",
-    //     { cache: 'no-store' }   // so that next doesn't cache this route
-    // );
-    // const data = await res.json();
+    const res = await fetch("http://127.0.0.1:8090/api/collections/notes/records?page=1&perPage=30",
+        { cache: 'no-store' }   // so that next doesn't cache this route
+    );
+    const data = await res.json();
     return data?.items;
 }
 
